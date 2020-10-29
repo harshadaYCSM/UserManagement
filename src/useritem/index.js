@@ -9,7 +9,7 @@ class UserItem extends React.Component {
  
     render() {
         return (
-                <tr key={this.props.user.id}> {this.props.user.id} . 
+                <tr key={this.props.user.id}> {this.props.user.id}
                     <td>{this.props.user.name} </td>
                     <td> <button 
                         className="btn-del"
@@ -17,7 +17,7 @@ class UserItem extends React.Component {
                     <td>
                     <button 
                         className="btn-select"
-                        onClick={() => {this.props.selectUser(this.props.user.id-1) } }>Select User</button>
+                        onClick={() => {this.props.selectUser(this.props.user.id) } }>Select User</button>
                     </td>
                 </tr>
         );

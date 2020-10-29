@@ -13,7 +13,6 @@ class UserList extends React.Component{
           userList : null,
           isData: false,
           displayDetails : false,
-          index : null
           }
     }
   
@@ -38,8 +37,8 @@ class UserList extends React.Component{
     }
 
     selectUser(i) {
-      this.setState({displayDetails:true,index:i})
-
+      this.selectedUser = this.state.userList.find((ele) => ele.id === i)
+      this.setState({displayDetails:true})
     }
 
   componentDidMount() {
@@ -51,7 +50,7 @@ class UserList extends React.Component{
         <div className="user-list">
         {this.state.isData ? (this.state.userList.map((user) => <UserItem user={user} selectUser={this.selectUser.bind(this)} deleteUser={this.deleteUser.bind(this)}/>)) : 
         (<LoaderPercent />)}
-        {this.state.displayDetails ? <UserDetails selectedUser={this.state.userList[this.state.index]}/> : <div>Select any user to see details</div>}
+        {this.state.displayDetails ? <UserDetails selectedUser={this.selectedUser}/> : <div>Select any user to see details</div>}
           </div>
       )
     }
