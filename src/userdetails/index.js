@@ -28,7 +28,6 @@ class UserDetails extends React.Component {
 
 render() {
     return (
-        <div className="userDetail">
         <ul> Selected User Details :
           <li>Name: {this.props.selectedUser.name}</li>
           <li>Email Id: {this.props.selectedUser.email}</li>
@@ -37,7 +36,7 @@ render() {
           <li>City: {this.props.selectedUser.address.city}</li>
           <li>Compny Name: {this.props.selectedUser.company.name}</li>
         </ul>
-      </div>)
+    )
 }
 }
 

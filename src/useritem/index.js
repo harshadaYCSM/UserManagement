@@ -1,5 +1,5 @@
 import React from 'react';
-import UserDetails from '.././userdetails'
+import './index.css'
 
 class UserItem extends React.Component {
     constructor(props) {
@@ -9,15 +9,15 @@ class UserItem extends React.Component {
  
     render() {
         return (
-                <tr key={this.props.user.id}> {this.props.user.id}
-                    <td>{this.props.user.name} </td>
-                    <td> <button 
+                <tr key={this.props.user.id} id={this.props.user.id}> 
+                    <td onClick={() => {this.props.selectUser(this.props.user.id) } }>{this.props.user.name} </td>
+                    <td> <img src="delete.png"
                         className="btn-del"
-                        onClick={() => { if (window.confirm('Are you sure to delete this user?')) this.props.deleteUser(this.props.user.id) } }>Delete User</button></td>
+                        onClick={() => { if (window.confirm('Are you sure to delete this user?')) this.props.deleteUser(this.props.user.id) } }></img></td>
                     <td>
-                    <button 
+                    {/* <button 
                         className="btn-select"
-                        onClick={() => {this.props.selectUser(this.props.user.id) } }>Select User</button>
+                        onClick={() => {this.props.selectUser(this.props.user.id) } }>Select User</button> */}
                     </td>
                 </tr>
         );

@@ -1,0 +1,7 @@
+.user-list {
+    display: inline-table;
+}
+
+.user-details {
+    display: inline-flex;
+}
