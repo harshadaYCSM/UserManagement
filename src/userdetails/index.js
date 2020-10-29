@@ -3,10 +3,6 @@ import React from 'react';
 class UserDetails extends React.Component {
     constructor(props) {
         super(props)
-        this.state ={
-            selectedId : this.props.selectedId + 1
-        }
-        this.selectedUser = this.props.userList.filter((ele) => ele.id === this.state.selectedId)
     }
 
     /* userDetailsRender(selectedID) {
@@ -34,12 +30,12 @@ render() {
     return (
         <div className="userDetail">
         <ul> Selected User Details :
-          <li>Name: {this.selectedUser[0].name}</li>
-          <li>Email Id: {this.selectedUser[0].email}</li>
-          <li>Website: {this.selectedUser[0].website}</li>
-          <li>Contact: {this.selectedUser[0].phone}</li>
-          <li>City: {this.selectedUser[0].address.city}</li>
-          <li>Compny Name: {this.selectedUser[0].company.name}</li>
+          <li>Name: {this.props.selectedUser.name}</li>
+          <li>Email Id: {this.props.selectedUser.email}</li>
+          <li>Website: {this.props.selectedUser.website}</li>
+          <li>Contact: {this.props.selectedUser.phone}</li>
+          <li>City: {this.props.selectedUser.address.city}</li>
+          <li>Compny Name: {this.props.selectedUser.company.name}</li>
         </ul>
       </div>)
 }

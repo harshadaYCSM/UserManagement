@@ -2,6 +2,7 @@ import React from 'react';
 // import './index.css';
 import LoaderPercent from '.././loader'
 import UserItem from '.././useritem'
+import UserDetails from '../userdetails';
 
 
 class UserList extends React.Component{
@@ -11,6 +12,8 @@ class UserList extends React.Component{
       this.state = {
           userList : null,
           isData: false,
+          displayDetails : false,
+          index : null
           }
     }
   
@@ -35,8 +38,8 @@ class UserList extends React.Component{
     }
 
     selectUser(i) {
-      this.setState({displayDetails:true,
-      index:i})
+      this.setState({displayDetails:true,index:i})
+
     }
 
   componentDidMount() {
@@ -46,7 +49,9 @@ class UserList extends React.Component{
      render() {
       return(
         <div className="user-list">
-        {this.state.isData ? (this.state.userList.map((user) => <UserItem user={user} />)) : (<LoaderPercent />)}
+        {this.state.isData ? (this.state.userList.map((user) => <UserItem user={user} selectUser={this.selectUser.bind(this)} deleteUser={this.deleteUser.bind(this)}/>)) : 
+        (<LoaderPercent />)}
+        {this.state.displayDetails ? <UserDetails selectedUser={this.state.userList[this.state.index]}/> : <div>Select any user to see details</div>}
           </div>
       )
     }

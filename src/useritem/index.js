@@ -8,19 +8,19 @@ class UserItem extends React.Component {
 
  
     render() {
-            return (
-                    <tr key={this.props.user.id}> {this.props.user.id} . 
-                        <td>{this.props.user.name} </td>
-                        <td> <button 
-                          className="btn-del"
-                          onClick={() => { if (window.confirm('Are you sure to delete this user?')) this.deleteUser(this.props.user.id) } }>Delete User</button></td>
-                        <td>
-                        <button 
-                          className="btn-select"
-                          onClick={() => {this.selectUser(this.props.user.id-1) } }>Select User</button>
-                        </td>
-                    </tr>
-            );
+        return (
+                <tr key={this.props.user.id}> {this.props.user.id} . 
+                    <td>{this.props.user.name} </td>
+                    <td> <button 
+                        className="btn-del"
+                        onClick={() => { if (window.confirm('Are you sure to delete this user?')) this.props.deleteUser(this.props.user.id) } }>Delete User</button></td>
+                    <td>
+                    <button 
+                        className="btn-select"
+                        onClick={() => {this.props.selectUser(this.props.user.id-1) } }>Select User</button>
+                    </td>
+                </tr>
+        );
     }
 }
 
