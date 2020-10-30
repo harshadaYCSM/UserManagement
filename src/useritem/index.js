@@ -9,7 +9,7 @@ class UserItem extends React.Component {
  
     render() {
         return (
-                <tr key={this.props.user.id} id={this.props.user.id}> 
+                <tr key={this.props.user.id} id={this.props.user.id}> {this.props.user.id}
                     <td onClick={() => {this.props.selectUser(this.props.user.id) } }>{this.props.user.name} </td>
                     <td> <img src="delete.png"
                         className="btn-del"

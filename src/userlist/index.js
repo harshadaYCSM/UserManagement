@@ -46,12 +46,48 @@ class UserList extends React.Component{
     }
 
     addUser() {
+      
       console.log("add user" + document.querySelector(".user-list"))
       let personName = window.prompt("Please enter name")
-      let addedData =  {id: this.state.userList.length,
-        name: personName}
+      let newId = this.state.userList.length + 1
+      console.log(this.state.userList.length)
 
-      this.setState({userList : [...this.state.userList, addedData]})
+        fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'POST',
+          body: JSON.stringify({
+            "id": newId,
+            "name": personName,
+            "username": "Harshada",
+            "email": "harsh@april.biz",
+            "address": {
+              "street": "Boisar tarapur",
+              "suite": "Apt. Nh",
+              "city": "Mumbai",
+              "zipcode": "401504-3874",
+              "geo": {
+                "lat": "-37.3159",
+                "lng": "81.1496"
+              }
+            },
+            "phone": "55865-881125-255",
+            "website": "hahhahye.org",
+            "company": {
+              "name": "Radheya-Foundation",
+              "catchPhrase": "Multi-layered client-server neural-net",
+              "bs": "harness real-time e-markets"
+            }
+          },),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((addedData) => {
+            console.log(addedData)
+            this.setState({userList : [...this.state.userList, addedData]})
+            console.log(this.state.userList)
+          })
+        
     }
   componentDidMount() {
       this.getUsers()
