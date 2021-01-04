@@ -13,13 +13,14 @@ class UserList extends React.Component{
           userList : null,
           isData: false,
           displayDetails : false,
+          selectedUser:null
           }
     }
   
     getUsers() {
-        fetch('https://jsonplaceholder.typicode.com/users', {
-          method: 'GET',
-         })
+      fetch('https://jsonplaceholder.typicode.com/users', {
+        method: 'GET',
+       })
         .then(response => response.json())
         .then(json => {
           console.log(json)
@@ -37,16 +38,18 @@ class UserList extends React.Component{
     }
 
     selectUser(i) {
-      if (this.selectedUser) {
-        document.getElementById(this.selectedUser.id ).style.background = "none"
+      if (this.state.selectedUser) {
+        //document.getElementById(this.selectedUser.id ).style.background = "none"
       }
       this.selectedUser = this.state.userList.find((ele) => ele.id === i)
-      document.getElementById(i).style.background = "#91a9ec"
-      this.setState({displayDetails:true})
+      //document.getElementById(i).style.background = "#91a9ec"
+      this.setState({
+        displayDetails:true,
+        selectedUser: this.selectedUser
+      })
     }
 
     addUser() {
-      
       console.log("add user" + document.querySelector(".user-list"))
       let personName = window.prompt("Please enter name")
       let newId = this.state.userList.length + 1
@@ -97,7 +100,7 @@ class UserList extends React.Component{
       return(
         <div>
         <div className="user-list">
-        {this.state.isData ? (this.state.userList.map((user) => <UserItem user={user} selectUser={this.selectUser.bind(this)} deleteUser={this.deleteUser.bind(this)}/>)) : 
+        {this.state.isData ? (this.state.userList.map((user) => <UserItem user={user} selectedUser={this.state.selectedUser} selectUser={this.selectUser.bind(this)} deleteUser={this.deleteUser.bind(this)}/>)) : 
         (<LoaderPercent />)}
         <button onClick={this.addUser.bind(this)}> Add User </button>
         </div>
